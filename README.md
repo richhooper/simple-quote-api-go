@@ -12,3 +12,9 @@ Target is to build something that can:
 - have a build and deploy process
 - test out linting tools and cli
 
+## Call examples
+
+    curl  -X POST \
+    'http://localhost:8080/quote' \
+    --header 'Content-Type: application/json' \
+    --data-raw '{"age": 30, "coverStartDate": "2023-01-01T00:00:00Z"}'

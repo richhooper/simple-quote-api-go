@@ -20,21 +20,26 @@ type PriceResponseModel struct {
 	QuoteId   string  `json:"quoteId"`
 }
 
+// Create an interface so we can create an instance to use in main()
 type QuoteController interface {
 	HandleQuotePostRequest(c *gin.Context)
 }
 
+// This is the underlying type that this conroller will end up sitting under
 type quoteController struct {
 }
 
+// Constructor
 func NewQuoteController() QuoteController {
 	return &quoteController{}
 }
 
+// Function is passed an instance of the quoteController so is a method attached to that struct
 func (s *quoteController) HandleQuotePostRequest(c *gin.Context) {
 	var req PriceRequestModel
 	err := c.BindJSON(&req)
 	if err != nil {
+		// Obviously need to handle/trap errors better
 		return
 	}
 
